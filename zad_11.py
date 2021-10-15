@@ -20,7 +20,7 @@ stmt = select([census.columns.state])
 rev_stmt = stmt.order_by(desc(census.columns.state))
 
 # Wykonaj zapytanie i zapisz wynik w zmiennej rev_results
-rev_results = connection.execute(rev_stmt).fetchmany(size=10)
+rev_results = connection.execute(rev_stmt).fetchall()
 
 # Wyświetl piersze 10 wpisów
-print(rev_results)
+print(rev_results[:10])
