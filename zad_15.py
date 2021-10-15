@@ -11,7 +11,7 @@ metadata = MetaData()
 census = Table('census', metadata, autoload=True, autoload_with=engine)
 
 # Zaimportuj moduł func
-____
+from sqlalchemy import func
 
 # Zbuduj wyrażenie, które wyświetli całkowitą populację dla poszczególnych
 # stanów USA w roku 2008. Czyli trzeba zsumować kolumnę pop2008, a całość
