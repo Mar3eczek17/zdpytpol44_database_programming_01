@@ -28,7 +28,6 @@ results = connection.execute(stmt).fetchall()
 print(results)
 
 first_row = results[0]
-print(first_row)
 
 # Wyświetl nazwy kolumn (klucze) wyniku
 print(first_row.keys())

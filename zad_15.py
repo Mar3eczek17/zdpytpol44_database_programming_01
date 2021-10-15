@@ -20,20 +20,22 @@ from sqlalchemy import func
 
 # Zbuduj wyrażenie, które zsumuje wartości w kolumnie pop2008, a wynik
 # wyświetli w kolumnie z etykietą population
-pop2008_sum = func.sum(____).label(____)
+pop2008_sum = func.sum(census.columns.pop2008).label('population')
 
 # Zbuduj zapytanie, które wyświetli wartości w kolumnie state i zsumowane wartości
 # w kolumnie pop2008
-stmt = select([____, ____])
+stmt = select([census.columns.state, func.sum(census.columns.pop2008)])
 
 # Wyniki pogrupuj po kolumnie state
-stmt = stmt.group_by(____)
+stmt = stmt.group_by(census.columns.state)
 
 # Wykonaj zapytanie, wynik przypisz do zmiennej results
-results = connection.execute(____).fetchall()
+results = connection.execute(stmt).fetchall()
 
 # Wyświetl wynik
 print(results)
 
+first_row = results[0]
+
 # Wyświetl nazwy kolumn (klucze) wyniku
-print(____)
+print(first_row.keys())
