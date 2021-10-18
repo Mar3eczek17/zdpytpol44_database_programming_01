@@ -19,10 +19,10 @@ from sqlalchemy import func
 stmt = select([census.columns.state, func.count(census.columns.age)])
 
 # Pogrupuj po kolumnie state
-stmt = stmt.group_by(census.columns.state,)
+stmt = stmt.group_by(census.columns.state)
 
 # Wykonaj zapytanie, wynik przechowaj w zmiennej results
-results = connection.execute(stmt).fetchall()
+results = connection.execute(stmt).fetchall()  # -> Lista (ResultSet)
 
 # Wyświetl wynik
 print(results)
@@ -31,3 +31,4 @@ first_row = results[0]
 
 # Wyświetl nazwy kolumn (klucze) wyniku
 print(first_row.keys())
+# print(results[0].keys())

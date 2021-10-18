@@ -19,8 +19,9 @@ stmt = select([census.columns.state])
 # Posortuj wyni w kolejności odwrotnej
 rev_stmt = stmt.order_by(desc(census.columns.state))
 
+limited_stmt = rev_stmt.limit(10)
 # Wykonaj zapytanie i zapisz wynik w zmiennej rev_results
-rev_results = connection.execute(rev_stmt).fetchall()
+rev_results = connection.execute(limited_stmt).fetchall()
 
 # Wyświetl piersze 10 wpisów
-print(rev_results[:10])
+print(rev_results)
